@@ -14,30 +14,30 @@ namespace MyShop.WebUI.Controllers
         public BasketController(IBasketService BasketService) {
             this.basketService = BasketService;
         }
-        // GET: Basket
+        // GET: Basket2
         public ActionResult Index()
         {
             var model = basketService.GetBasketItems(this.HttpContext);
             return View(model);
         }
 
-        public ActionResult AddToBasket(string id) {
-            basketService.AddToBasket(this.HttpContext, id);
+        public ActionResult AddToBasket(string Id) {
+            basketService.AddToBasket(this.HttpContext, Id);
 
             return RedirectToAction("Index");
         }
 
-        public ActionResult RemoveFromBasket(string id) {
-            basketService.RemoveFromBasket(this.HttpContext, id);
+        public ActionResult RemoveFromBasket(string Id)
+        {
+            basketService.RemoveFromBasket(this.HttpContext, Id);
 
             return RedirectToAction("Index");
         }
-
 
         public PartialViewResult BasketSummary() {
             var basketSummary = basketService.GetBasketSummary(this.HttpContext);
 
-            return PartialView("BasketSummary", basketSummary);
+            return PartialView(basketSummary);
         }
     }
 }
