@@ -208,9 +208,11 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderManagerController.cs" />
     <Compile Include="Controllers\ProductCategoryManagerController.cs" />
     <Compile Include="Controllers\ProductManagerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -306,6 +308,10 @@
     <Content Include="Views\Basket\BasketSummary.cshtml" />
     <Content Include="Views\Basket\Checkout.cshtml" />
     <Content Include="Views\Basket\ThankYou.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\OrderManager\Index.cshtml" />
+    <Content Include="Views\OrderManager\UpdateOrder.cshtml" />
+    <Content Include="Views\OrderManager\OrderItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
