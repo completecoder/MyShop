@@ -316,6 +316,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\ProductImages\" />
+    <Folder Include="Views\Sample\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
