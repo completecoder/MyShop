@@ -11,20 +11,22 @@ namespace MyShop.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        IRepository<Customer> customers;
         IRepository<Product> context;
         IRepository<ProductCategory> productCategories;
 
-        public HomeController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
+        public HomeController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext, IRepository<Customer> Customers)
         {
             context = productContext;
             productCategories = productCategoryContext;
+            customers = Customers;
         }
 
         public ActionResult Index(string Category=null)
         {
             List<Product> products;
             List<ProductCategory> categories = productCategories.Collection().ToList();
-
+            Customer customer = customers.Collection().FirstOrDefault(c => c.Email == User.Identity.Name);
             if (Category == null)
             {
                 products = context.Collection().ToList();
@@ -36,7 +38,7 @@ namespace MyShop.WebUI.Controllers
             ProductListViewModel model = new ProductListViewModel();
             model.Products = products;
             model.ProductCategories = categories;
-
+            model.Customer = customer;
 
             return View(model);
         }
