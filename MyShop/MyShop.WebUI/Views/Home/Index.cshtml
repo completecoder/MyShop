@@ -2,26 +2,39 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-<h1>Products</h1>
-
-<div class="col-md-2">
-    <h4>Filter by Category</h4>
-    <div class="list-group">
-        @Html.ActionLink("All", "Index", null, new { @class = Request["Category"]==null? "list-group-item active" : "list-group-item"  })
-        @foreach (var cat in Model.ProductCategories) {
-            @Html.ActionLink(cat.Category, "Index", new { Category=cat.Category }, new { @class = Request["Category"] == cat.Category ? "list-group-item active" : "list-group-item" })
+<div class="col-lg-12" style="text-align:center">
+    <ul class="list-inline list-group" style="border: 1px solid #dedede;border-radius: 8px;">
+        @foreach (var cat in Model.ProductCategories)
+        {
+            <li>
+                @Html.ActionLink(cat.Category, "Index", new { Category = cat.Category }, new { @class = Request["Category"] == cat.Category ? "list-group-item active" : "list-group-item" })
+            </li>
         }
-    </div>
+    </ul>
+
 </div>
-<div class="col-md-10">
+<div class="col-lg-12">
+@if (@Model.Customer != null)
+{
+    <p style="font-size:36px;font-weight:500">Welcome  @Model.Customer.FirstName;</p>
+}
+else
+{
+    <p style="font-size:36px;font-weight:500">Welcome  User</p>
+}
+
+</div>
+
+<h3>Shop By Categories</h3>
+
+<div class="col-md-12">
 
     @foreach (var item in Model.Products)
     {
 
-        <div class="col-md-4" style="height:450px;padding:10px;margin:10px;border: solid thin whitesmoke">
-            <div class="col-md-12">
-                <img class="img" style="height:250px" src="~/Content/ProductImages/@item.Image" />
+        <div class="card col-md-3" style="height:450px;margin-bottom:5px;padding:5px;border: solid thin whitesmoke">
+            <div class="col-md-12" >
+                <img class="img" style="width: 100%;" src="~/Content/ProductImages/@item.Image" />
             </div>
             <div class="col-md-12">
                 <strong>@Html.ActionLink(item.Name, "Details", new { id = item.Id })</strong>
